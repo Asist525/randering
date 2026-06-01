@@ -9,61 +9,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue: #4F8EF7;
-      --purple: #9B6DFF;
-      --cyan: #22D3EE;
-      --text: #F1F5F9;
-      --muted: rgba(241,245,249,0.5);
-      --border: rgba(255,255,255,0.08);
+      --blue: #4F8EF7; --purple: #9B6DFF; --cyan: #22D3EE;
+      --green: #10B981; --text: #F1F5F9;
+      --muted: rgba(241,245,249,0.5); --border: rgba(255,255,255,0.08);
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #04080F; color: var(--text); overflow-x: hidden; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #04080F;
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 0 40px; height: 64px;
       display: flex; align-items: center; justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(4,8,15,0.9) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(4,8,15,0.95) 0%, transparent 100%);
+      backdrop-filter: blur(12px);
     }
-    .logo {
-      font-size: 15px; font-weight: 900; letter-spacing: 0.2em;
-      color: #fff; text-decoration: none;
-    }
+    .logo { font-size: 15px; font-weight: 900; letter-spacing: 0.2em; color: #fff; text-decoration: none; }
     .logo em { color: var(--blue); font-style: normal; }
     .nav-r { display: flex; align-items: center; gap: 8px; }
-    .nav-link {
-      font-size: 13px; font-weight: 500; color: var(--muted);
-      text-decoration: none; padding: 6px 14px; border-radius: 8px;
-      transition: all .2s;
-    }
+    .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: all .2s; }
     .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); }
-    .nav-dl {
-      font-size: 13px; font-weight: 700; color: #fff;
-      background: var(--blue); padding: 8px 20px; border-radius: 8px;
-      text-decoration: none; transition: opacity .2s;
-    }
+    .nav-dl { font-size: 13px; font-weight: 700; color: #fff; background: var(--blue); padding: 8px 20px; border-radius: 8px; text-decoration: none; transition: opacity .2s; }
     .nav-dl:hover { opacity: .85; }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
       position: relative; min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 80px 24px 60px;
-      overflow: hidden;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px 60px; overflow: hidden;
     }
-
-    /* 배경 */
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
       background:
@@ -74,35 +49,17 @@
     }
     .hero-grid {
       position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 60px 60px;
       mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
     }
-    /* 빛나는 선 */
-    .hero-line {
-      position: absolute; left: 50%; top: 0; bottom: 0;
-      width: 1px; background: linear-gradient(to bottom, transparent 0%, rgba(79,142,247,0.4) 30%, rgba(155,109,255,0.4) 70%, transparent 100%);
-      transform: translateX(-50%);
-    }
-
-    /* 부유하는 카드들 */
-    .float-card {
-      position: absolute; border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(10,16,26,0.8); backdrop-filter: blur(12px);
-      padding: 14px 18px; font-size: 12px;
-      animation: float 6s ease-in-out infinite;
-    }
+    .hero-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent 0%, rgba(79,142,247,0.4) 30%, rgba(155,109,255,0.4) 70%, transparent 100%); transform: translateX(-50%); }
+    .float-card { position: absolute; border-radius: 12px; border: 1px solid var(--border); background: rgba(10,16,26,0.8); backdrop-filter: blur(12px); padding: 14px 18px; font-size: 12px; animation: float 6s ease-in-out infinite; }
     .fc1 { left: 6%; top: 30%; animation-delay: 0s; }
     .fc2 { right: 6%; top: 25%; animation-delay: 2s; }
     .fc3 { left: 10%; bottom: 22%; animation-delay: 1s; }
     .fc4 { right: 10%; bottom: 28%; animation-delay: 3s; }
-    @keyframes float {
-      0%,100%{ transform: translateY(0px); }
-      50%{ transform: translateY(-12px); }
-    }
+    @keyframes float { 0%,100%{ transform: translateY(0px); } 50%{ transform: translateY(-12px); } }
     .fc-label { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
     .fc-val { font-size: 18px; font-weight: 800; color: #fff; }
     .fc-val span { font-size: 11px; font-weight: 500; color: var(--muted); margin-left: 2px; }
@@ -111,106 +68,62 @@
     .fc-list { display: flex; flex-direction: column; gap: 5px; }
     .fc-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
     .fc-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .dot-b { background: var(--blue); }
-    .dot-p { background: var(--purple); }
-    .dot-c { background: var(--cyan); }
-    .fc-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;
-    }
+    .dot-b { background: var(--blue); } .dot-p { background: var(--purple); } .dot-c { background: var(--cyan); }
+    .fc-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
     .badge-g { background: rgba(16,185,129,0.15); color: #10B981; }
     .badge-b { background: rgba(79,142,247,0.15); color: var(--blue); }
-
-    /* 히어로 텍스트 */
-    .hero-inner { position: relative; z-index: 2; max-width: 800px; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 5px 14px; border-radius: 999px;
-      border: 1px solid rgba(79,142,247,0.3);
-      background: rgba(79,142,247,0.08);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 28px;
-    }
+    .hero-inner { position: relative; z-index: 2; max-width: 820px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(79,142,247,0.3); background: rgba(79,142,247,0.08); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 28px; }
     .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(79,142,247,0.4)} 50%{opacity:.6;box-shadow:0 0 0 6px rgba(79,142,247,0)} }
-
-    .hero h1 {
-      font-size: clamp(44px, 7vw, 86px);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -0.035em;
-      margin-bottom: 24px;
-    }
+    .hero h1 { font-size: clamp(44px, 7vw, 86px); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; margin-bottom: 24px; }
     .h1-line1 { display: block; color: rgba(255,255,255,0.92); }
-    .h1-line2 {
-      display: block;
-      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--cyan) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: clamp(15px, 2vw, 18px); color: var(--muted);
-      line-height: 1.7; max-width: 560px; margin: 0 auto 44px;
-      font-weight: 400;
-    }
+    .h1-line2 { display: block; background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 50%, var(--cyan) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: clamp(15px, 2vw, 18px); color: var(--muted); line-height: 1.7; max-width: 560px; margin: 0 auto 44px; }
 
     /* CTA */
-    .cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+    .cta-os-tabs { display: flex; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
+    .cta-os-tab { padding: 8px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; color: var(--muted); transition: all .2s; border: none; background: none; }
+    .cta-os-tab.active { background: rgba(255,255,255,0.1); color: #fff; }
+    .cta-btns { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; max-width: 420px; }
     .cta-main {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 18px 40px; border-radius: 14px;
+      display: inline-flex; align-items: center; gap: 14px; width: 100%;
+      padding: 18px 32px; border-radius: 14px;
       background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff; font-size: 17px; font-weight: 800;
-      text-decoration: none;
+      color: #fff; font-size: 16px; font-weight: 800; text-decoration: none;
       box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 20px 60px rgba(79,142,247,0.35);
       transition: all .25s; position: relative; overflow: hidden;
     }
-    .cta-main::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-      opacity: 0; transition: opacity .2s;
-    }
-    .cta-main:hover { transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 30px 80px rgba(79,142,247,0.5); }
+    .cta-main::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent); opacity: 0; transition: opacity .2s; }
+    .cta-main:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 30px 80px rgba(79,142,247,0.5); }
     .cta-main:hover::before { opacity: 1; }
-    .cta-icon { font-size: 20px; }
-    .cta-text { display: flex; flex-direction: column; text-align: left; }
-    .cta-text-main { font-size: 16px; font-weight: 800; line-height: 1.2; }
-    .cta-text-sub { font-size: 11px; font-weight: 500; opacity: 0.75; }
-    .cta-meta {
-      display: flex; align-items: center; gap: 20px;
-      font-size: 12px; color: var(--muted); flex-wrap: wrap; justify-content: center;
+    .cta-icon { font-size: 22px; flex-shrink: 0; }
+    .cta-text { display: flex; flex-direction: column; text-align: left; flex: 1; }
+    .cta-text-main { font-size: 15px; font-weight: 800; line-height: 1.2; }
+    .cta-text-sub { font-size: 11px; font-weight: 500; opacity: 0.75; margin-top: 2px; }
+    .cta-secondary {
+      display: inline-flex; align-items: center; gap: 14px; width: 100%;
+      padding: 14px 32px; border-radius: 12px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      color: var(--muted); font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all .2s;
     }
+    .cta-secondary:hover { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.15); }
+    .cta-meta { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--muted); flex-wrap: wrap; justify-content: center; }
     .cta-meta-item { display: flex; align-items: center; gap: 5px; }
-
-    /* 스크롤 힌트 */
-    .scroll-hint {
-      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-      color: var(--muted); animation: fadeup 3s ease-in-out infinite;
-      z-index: 2;
-    }
+    .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); animation: fadeup 3s ease-in-out infinite; z-index: 2; }
     .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); }
     @keyframes fadeup { 0%,100%{opacity:0.3;transform:translateX(-50%) translateY(4px)} 50%{opacity:0.8;transform:translateX(-50%) translateY(0)} }
 
-    /* ─── SECTION 공통 ─── */
+    /* SECTION 공통 */
     section { padding: 120px 0; }
     .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-    .s-eyebrow {
-      display: block; text-align: center;
-      font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 14px;
-    }
-    .s-title {
-      text-align: center; font-size: clamp(28px, 4vw, 48px);
-      font-weight: 900; letter-spacing: -0.025em;
-      line-height: 1.1; margin-bottom: 16px;
-    }
-    .s-sub {
-      text-align: center; font-size: 16px; color: var(--muted);
-      max-width: 520px; margin: 0 auto 64px; line-height: 1.7;
-    }
+    .s-eyebrow { display: block; text-align: center; font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .s-title { text-align: center; font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 16px; }
+    .s-sub { text-align: center; font-size: 16px; color: var(--muted); max-width: 520px; margin: 0 auto 64px; line-height: 1.7; }
 
-    /* ─── PIPELINE ─── */
+    /* PIPELINE */
     .pipeline-sec { background: rgba(255,255,255,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .pipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: 20px; overflow: hidden; }
     .pipe-card { background: #07111C; padding: 44px 36px; transition: background .2s; }
@@ -220,58 +133,75 @@
     .pipe-name { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
     .pipe-desc { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 24px; }
     .pipe-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .pipe-tag {
-      padding: 3px 10px; border-radius: 5px; font-size: 10px; font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-      background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.45);
-    }
+    .pipe-tag { padding: 3px 10px; border-radius: 5px; font-size: 10px; font-weight: 600; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.45); }
 
-    /* ─── FEATURES ─── */
+    /* FEATURES */
     .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .feat-card {
-      background: rgba(255,255,255,0.025); border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px 24px;
-      transition: border-color .2s, background .2s;
-    }
+    .feat-card { background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; transition: border-color .2s, background .2s; }
     .feat-card:hover { border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.04); }
     .feat-card.span2 { grid-column: span 2; }
     .feat-ic { font-size: 24px; margin-bottom: 16px; }
     .feat-name { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
     .feat-desc { font-size: 13px; color: var(--muted); line-height: 1.75; }
 
-    /* ─── SPEC ─── */
+    /* SPEC */
     .spec-sec { background: rgba(255,255,255,0.015); border-top: 1px solid var(--border); }
     .spec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; }
     .spec-item { background: #07111C; padding: 28px 24px; }
     .spec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
-    .spec-val { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; }
+    .spec-val { font-size: 14px; font-weight: 600; color: #fff; line-height: 1.6; }
+    .spec-chip { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-top: 6px; }
+    .chip-win { background: rgba(0,120,212,0.2); color: #60AEFF; }
+    .chip-mac { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
 
-    /* ─── DOWNLOAD ─── */
+    /* DOWNLOAD */
     .dl-sec { position: relative; overflow: hidden; }
-    .dl-bg {
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 70% 80% at 50% 50%, rgba(79,142,247,0.12) 0%, transparent 65%),
-        #04080F;
-    }
+    .dl-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(79,142,247,0.12) 0%, transparent 65%), #04080F; }
     .dl-inner { position: relative; z-index: 2; text-align: center; }
     .dl-title { font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; }
     .dl-sub { font-size: 17px; color: var(--muted); margin-bottom: 48px; max-width: 460px; margin-left: auto; margin-right: auto; }
-    .dl-btn {
-      display: inline-flex; align-items: center; gap: 14px;
-      padding: 20px 48px; border-radius: 16px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: #fff; font-size: 18px; font-weight: 800;
-      text-decoration: none;
-      box-shadow: 0 0 80px rgba(79,142,247,0.3);
-      transition: all .25s; margin-bottom: 24px;
-    }
-    .dl-btn:hover { transform: translateY(-3px); box-shadow: 0 0 100px rgba(79,142,247,0.5); }
-    .dl-btn svg { flex-shrink: 0; }
-    .dl-note { font-size: 12px; color: var(--muted); }
-    .dl-note span { margin: 0 10px; opacity: 0.4; }
 
-    /* ─── FOOTER ─── */
+    /* 플랫폼 탭 */
+    .dl-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 32px; }
+    .dl-tab { padding: 10px 28px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); transition: all .2s; }
+    .dl-tab.active { background: rgba(79,142,247,0.15); border-color: rgba(79,142,247,0.4); color: #fff; }
+    .dl-panel { display: none; }
+    .dl-panel.active { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+    .dl-btn-wrap { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 460px; }
+    .dl-btn {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 28px; border-radius: 14px; text-decoration: none; color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      box-shadow: 0 0 60px rgba(79,142,247,0.25);
+      transition: all .25s; font-weight: 700;
+    }
+    .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 0 80px rgba(79,142,247,0.45); }
+    .dl-btn-secondary {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      box-shadow: none;
+    }
+    .dl-btn-secondary:hover { background: rgba(255,255,255,0.09); box-shadow: none; border-color: rgba(255,255,255,0.15); }
+    .dl-btn-icon { font-size: 22px; flex-shrink: 0; }
+    .dl-btn-text { display: flex; flex-direction: column; text-align: left; flex: 1; }
+    .dl-btn-main { font-size: 15px; font-weight: 800; }
+    .dl-btn-sub { font-size: 11px; font-weight: 500; opacity: 0.65; margin-top: 2px; }
+
+    /* macOS 안내 박스 */
+    .dl-mac-notice {
+      display: flex; align-items: flex-start; gap: 12px;
+      background: rgba(255,193,7,0.08); border: 1px solid rgba(255,193,7,0.25);
+      border-radius: 12px; padding: 16px 20px;
+      max-width: 460px; text-align: left; margin-top: 4px;
+    }
+    .dl-mac-notice-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .dl-mac-notice-text { font-size: 12px; color: rgba(255,193,7,0.85); line-height: 1.7; }
+    .dl-mac-notice-text strong { color: #FFC107; }
+
+    .dl-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .dl-note span { margin: 0 8px; opacity: 0.4; }
+
+    /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .f-logo { font-size: 13px; font-weight: 900; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); }
     .f-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
@@ -279,7 +209,7 @@
     .f-links a { font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color .2s; }
     .f-links a:hover { color: rgba(255,255,255,0.7); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media(max-width:900px) {
       .pipe-grid { grid-template-columns: 1fr; }
       .feat-grid { grid-template-columns: 1fr 1fr; }
@@ -292,6 +222,7 @@
       .feat-grid { grid-template-columns: 1fr; }
       .spec-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; text-align: center; padding: 28px 20px; }
+      .dl-tabs { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -312,8 +243,6 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-line"></div>
-
-  <!-- 부유 카드 -->
   <div class="float-card fc1">
     <div class="fc-label">PM 커버리지</div>
     <div class="fc-val">87<span>%</span></div>
@@ -341,45 +270,64 @@
   </div>
 
   <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-dot"></span>
-      v2.0 · AI 설계 자동화 플랫폼
-    </div>
+    <div class="hero-eyebrow"><span class="eyebrow-dot"></span>v2.0 · AI 설계 자동화 플랫폼</div>
     <h1>
       <span class="h1-line1">설계의 90%를</span>
       <span class="h1-line2">AI에게 맡기세요</span>
     </h1>
-    <p class="hero-sub">
-      아이디어 한 줄이 PM 기획서·SA 설계도·애자일 태스크로 자동 완성됩니다.<br />
-      개발팀이 설계에 쓰는 시간을 되찾으세요.
-    </p>
+    <p class="hero-sub">아이디어 한 줄이 PM 기획서·SA 설계도·애자일 태스크로 자동 완성됩니다.<br/>개발팀이 설계에 쓰는 시간을 되찾으세요.</p>
+
     <div class="cta-wrap">
-      <a href="#download" class="cta-main" id="hero-cta">
-        <span class="cta-icon">⬇</span>
-        <span class="cta-text">
-          <span class="cta-text-main">지금 무료 다운로드</span>
-          <span class="cta-text-sub" id="hero-os-label">Windows 10/11 · macOS 12+</span>
-        </span>
-      </a>
+      <!-- OS 탭 -->
+      <div class="cta-os-tabs">
+        <button class="cta-os-tab" id="tab-win" onclick="switchOS('win')">🪟 Windows</button>
+        <button class="cta-os-tab" id="tab-mac" onclick="switchOS('mac')">🍎 macOS</button>
+      </div>
+
+      <!-- Windows CTA -->
+      <div class="cta-btns" id="cta-win">
+        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR.Setup.2.0.0.exe" class="cta-main">
+          <span class="cta-icon">⬇</span>
+          <span class="cta-text">
+            <span class="cta-text-main">Windows 다운로드</span>
+            <span class="cta-text-sub">v2.0.0 · Windows 10 / 11 · x64</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- macOS CTA -->
+      <div class="cta-btns" id="cta-mac" style="display:none;">
+        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR-2.0.0-arm64.dmg" class="cta-main">
+          <span class="cta-icon">⬇</span>
+          <span class="cta-text">
+            <span class="cta-text-main">Apple Silicon 다운로드</span>
+            <span class="cta-text-sub">v2.0.0 · M1 / M2 / M3 / M4 (arm64)</span>
+          </span>
+        </a>
+        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR-2.0.0.dmg" class="cta-secondary">
+          <span class="cta-icon">⬇</span>
+          <span class="cta-text">
+            <span class="cta-text-main" style="font-size:14px;color:#fff;">Intel Mac 다운로드</span>
+            <span class="cta-text-sub">v2.0.0 · Intel Core i5/i7/i9 (x64)</span>
+          </span>
+        </a>
+      </div>
+
       <div class="cta-meta">
         <span class="cta-meta-item">🔒 로컬 실행 · 데이터 외부 전송 없음</span>
         <span class="cta-meta-item">⚡ Python 별도 설치 불필요</span>
-        <span class="cta-meta-item">🔄 자동 업데이트</span>
+        <span class="cta-meta-item">🌐 Windows · macOS 지원</span>
       </div>
     </div>
   </div>
-
-  <div class="scroll-hint">
-    <span>SCROLL</span>
-    <div class="scroll-arrow"></div>
-  </div>
+  <div class="scroll-hint"><span>SCROLL</span><div class="scroll-arrow"></div></div>
 </section>
 
 <!-- PIPELINE -->
 <section class="pipeline-sec" id="features">
   <div class="container">
     <span class="s-eyebrow">3-Pipeline Architecture</span>
-    <h2 class="s-title">기획부터 배포 검증까지<br />하나의 흐름으로</h2>
+    <h2 class="s-title">기획부터 배포 검증까지<br/>하나의 흐름으로</h2>
     <p class="s-sub">서로 연결된 세 개의 AI 파이프라인이 개발 사이클 전체를 자동화합니다.</p>
     <div class="pipe-grid">
       <div class="pipe-card">
@@ -387,37 +335,21 @@
         <div class="pipe-icon-wrap">📐</div>
         <div class="pipe-name">설계 자동화</div>
         <div class="pipe-desc">텍스트 아이디어 또는 기존 코드베이스를 분석해 PM 기획서와 SA 설계 산출물 전체를 자동으로 생성합니다.</div>
-        <div class="pipe-tags">
-          <span class="pipe-tag">RTM</span>
-          <span class="pipe-tag">컴포넌트</span>
-          <span class="pipe-tag">API</span>
-          <span class="pipe-tag">DB 스키마</span>
-          <span class="pipe-tag">테스트 전략</span>
-        </div>
+        <div class="pipe-tags"><span class="pipe-tag">RTM</span><span class="pipe-tag">컴포넌트</span><span class="pipe-tag">API</span><span class="pipe-tag">DB 스키마</span><span class="pipe-tag">테스트 전략</span></div>
       </div>
       <div class="pipe-card">
         <div class="pipe-no">02 ── AGILE</div>
         <div class="pipe-icon-wrap">⚡</div>
         <div class="pipe-name">태스크 자동화</div>
         <div class="pipe-desc">설계 산출물을 역할별 태스크로 분해하고 팀원에게 배분합니다. GitHub Issues로 자동 발행됩니다.</div>
-        <div class="pipe-tags">
-          <span class="pipe-tag">스킬 매칭</span>
-          <span class="pipe-tag">GitHub Issues</span>
-          <span class="pipe-tag">RBAC</span>
-          <span class="pipe-tag">PM 승인</span>
-        </div>
+        <div class="pipe-tags"><span class="pipe-tag">스킬 매칭</span><span class="pipe-tag">GitHub Issues</span><span class="pipe-tag">RBAC</span><span class="pipe-tag">PM 승인</span></div>
       </div>
       <div class="pipe-card">
         <div class="pipe-no">03 ── DEV TRACKING</div>
         <div class="pipe-icon-wrap">🔍</div>
         <div class="pipe-name">구현 검증</div>
         <div class="pipe-desc">GitHub PR을 자동 분석해 실제 구현이 설계 스펙과 얼마나 일치하는지 검증합니다. 차이는 PM에게 보고됩니다.</div>
-        <div class="pipe-tags">
-          <span class="pipe-tag">PR 분석</span>
-          <span class="pipe-tag">GAP 탐지</span>
-          <span class="pipe-tag">의도 분류</span>
-          <span class="pipe-tag">설계 동기화</span>
-        </div>
+        <div class="pipe-tags"><span class="pipe-tag">PR 분석</span><span class="pipe-tag">GAP 탐지</span><span class="pipe-tag">의도 분류</span><span class="pipe-tag">설계 동기화</span></div>
       </div>
     </div>
   </div>
@@ -427,7 +359,7 @@
 <section>
   <div class="container">
     <span class="s-eyebrow">Features</span>
-    <h2 class="s-title">팀 협업을 위한<br />모든 것이 내장됐습니다</h2>
+    <h2 class="s-title">팀 협업을 위한<br/>모든 것이 내장됐습니다</h2>
     <p class="s-sub">분석부터 공유, 추적까지 하나의 앱 안에서 해결합니다.</p>
     <div class="feat-grid">
       <div class="feat-card span2">
@@ -456,9 +388,9 @@
         <div class="feat-desc">Python 런타임이 앱에 내장되어 별도 설치가 없습니다. 분석 데이터는 로컬 SQLite에 저장되며 외부로 전송되지 않습니다.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-ic">🔄</div>
-        <div class="feat-name">자동 업데이트</div>
-        <div class="feat-desc">새 버전이 출시되면 백그라운드에서 자동 다운로드 후 앱 재시작 시 즉시 적용됩니다. 항상 최신 버전을 유지합니다.</div>
+        <div class="feat-ic">🌐</div>
+        <div class="feat-name">Windows · macOS 지원</div>
+        <div class="feat-desc">Windows 10/11, macOS 12 이상을 지원합니다. Apple Silicon(M1~M4) 및 Intel Mac 모두 전용 바이너리로 네이티브 실행됩니다.</div>
       </div>
     </div>
   </div>
@@ -473,19 +405,27 @@
     <div class="spec-grid">
       <div class="spec-item">
         <div class="spec-label">운영체제</div>
-        <div class="spec-val">Windows 10 / 11 (x64)<br/>macOS 12+ (Apple Silicon · Intel)</div>
+        <div class="spec-val">
+          Windows 10 / 11<br/>
+          <span class="spec-chip chip-win">x64</span>
+        </div>
+        <div class="spec-val" style="margin-top:12px;">
+          macOS 12 Monterey+<br/>
+          <span class="spec-chip chip-mac">Apple Silicon</span>
+          <span class="spec-chip chip-mac" style="margin-left:4px;">Intel</span>
+        </div>
       </div>
       <div class="spec-item">
         <div class="spec-label">메모리</div>
-        <div class="spec-val">최소 8GB RAM<br />권장 16GB</div>
+        <div class="spec-val">최소 8GB RAM<br/>권장 16GB</div>
       </div>
       <div class="spec-item">
         <div class="spec-label">디스크</div>
-        <div class="spec-val">1GB 이상<br />여유 공간</div>
+        <div class="spec-val">1GB 이상<br/>여유 공간</div>
       </div>
       <div class="spec-item">
         <div class="spec-label">인터넷</div>
-        <div class="spec-val">AI 분석 시<br />연결 필요</div>
+        <div class="spec-val">AI 분석 시<br/>연결 필요</div>
       </div>
     </div>
   </div>
@@ -498,29 +438,53 @@
     <div class="dl-inner">
       <span class="s-eyebrow">Download</span>
       <div class="dl-title">지금 시작하세요</div>
-      <div class="dl-sub">설치 후 바로 사용 가능합니다.<br />Python 등 별도 설치가 필요 없습니다.</div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
-        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR.Setup.2.0.0.exe" class="dl-btn" id="dl-win">
-          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span style="display:flex;flex-direction:column;text-align:left;">
-            <span style="font-size:17px;font-weight:800;">Windows 다운로드</span>
-            <span style="font-size:11px;font-weight:500;opacity:.75;">v2.0.0 · Windows 10 / 11 · x64</span>
-          </span>
-        </a>
-        <a href="https://github.com/Asist525/randering/releases/latest/download/NAVIGATOR-2.0.0-arm64.dmg" class="dl-btn" id="dl-mac" style="background:linear-gradient(135deg,#1d3557,#2d4a7a);box-shadow:0 0 60px rgba(79,142,247,0.15);">
-          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span style="display:flex;flex-direction:column;text-align:left;">
-            <span style="font-size:17px;font-weight:800;">macOS 다운로드</span>
-            <span style="font-size:11px;font-weight:500;opacity:.75;">v2.0.0 · Apple Silicon · Intel (Rosetta 2)</span>
-          </span>
-        </a>
+      <div class="dl-sub">설치 후 바로 사용 가능합니다.<br/>Python 등 별도 설치가 필요 없습니다.</div>
+
+      <div class="dl-tabs">
+        <button class="dl-tab" id="dtab-win" onclick="switchDL('win')">🪟 Windows</button>
+        <button class="dl-tab" id="dtab-mac" onclick="switchDL('mac')">🍎 macOS</button>
       </div>
-      <div class="dl-note" style="margin-top:8px;">
-        자동 업데이트 지원
-        <span>|</span>
-        Python 별도 설치 불필요
-        <span>|</span>
-        macOS: 최초 실행 시 우클릭 → 열기
+
+      <!-- Windows 패널 -->
+      <div class="dl-panel" id="dpanel-win">
+        <div class="dl-btn-wrap">
+          <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR.Setup.2.0.0.exe" class="dl-btn">
+            <span class="dl-btn-icon">🪟</span>
+            <span class="dl-btn-text">
+              <span class="dl-btn-main">Windows 다운로드</span>
+              <span class="dl-btn-sub">v2.0.0 · Windows 10 / 11 · x64 · 328 MB</span>
+            </span>
+          </a>
+        </div>
+        <div class="dl-note">자동 업데이트 지원 <span>|</span> 관리자 권한 불필요 <span>|</span> Python 별도 설치 불필요</div>
+      </div>
+
+      <!-- macOS 패널 -->
+      <div class="dl-panel" id="dpanel-mac">
+        <div class="dl-btn-wrap">
+          <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR-2.0.0-arm64.dmg" class="dl-btn">
+            <span class="dl-btn-icon">🍎</span>
+            <span class="dl-btn-text">
+              <span class="dl-btn-main">Apple Silicon 다운로드</span>
+              <span class="dl-btn-sub">v2.0.0 · M1 / M2 / M3 / M4 · arm64 · 391 MB</span>
+            </span>
+          </a>
+          <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR-2.0.0.dmg" class="dl-btn dl-btn-secondary">
+            <span class="dl-btn-icon">💻</span>
+            <span class="dl-btn-text">
+              <span class="dl-btn-main">Intel Mac 다운로드</span>
+              <span class="dl-btn-sub">v2.0.0 · Intel Core · x64 · 405 MB</span>
+            </span>
+          </a>
+        </div>
+        <div class="dl-mac-notice">
+          <span class="dl-mac-notice-icon">⚠️</span>
+          <div class="dl-mac-notice-text">
+            <strong>첫 실행 시 Gatekeeper 안내:</strong> macOS 보안 정책으로 인해 미서명 앱이 차단될 수 있습니다.<br/>
+            DMG를 우클릭(또는 Control+클릭) → <strong>열기</strong> → <strong>"그래도 열기"</strong> 버튼을 클릭하세요. 이후 실행은 정상적으로 됩니다.
+          </div>
+        </div>
+        <div class="dl-note">Python 별도 설치 불필요 <span>|</span> macOS 12 Monterey 이상</div>
       </div>
     </div>
   </div>
@@ -529,28 +493,32 @@
 <!-- FOOTER -->
 <footer>
   <div class="f-logo">NAVIGATOR</div>
-  <div class="f-links">
-    <a href="mailto:support@navigator.app">문의하기</a>
-  </div>
+  <div class="f-links"><a href="mailto:support@navigator.app">문의하기</a></div>
   <div class="f-copy">© 2026 NAVIGATOR. All rights reserved.</div>
 </footer>
 
 <script>
-(function () {
-  const mac = /mac/i.test(navigator.platform) || (/mac/i.test(navigator.userAgent) && !/mobile/i.test(navigator.userAgent));
-  if (!mac) return;
-  // macOS 버튼 강조
-  var dlMac = document.getElementById('dl-mac');
-  var dlWin = document.getElementById('dl-win');
-  if (dlMac) dlMac.style.cssText += 'background:linear-gradient(135deg,#4F8EF7,#9B6DFF)!important;box-shadow:0 0 80px rgba(79,142,247,0.4)!important;';
-  if (dlWin) dlWin.style.opacity = '0.55';
-  // 히어로 CTA를 macOS 다운로드로 연결
-  var cta = document.getElementById('hero-cta');
-  var label = document.getElementById('hero-os-label');
-  if (cta) cta.href = 'https://github.com/Asist525/randering/releases/latest/download/NAVIGATOR-2.0.0-arm64.dmg';
-  if (label) label.textContent = 'macOS 12+ · Apple Silicon · Intel · 설치 후 즉시 사용';
-})();
+// 플랫폼 감지
+var isMac = /mac/i.test(navigator.platform) || (/mac/i.test(navigator.userAgent) && !/mobile/i.test(navigator.userAgent));
+
+function switchOS(os) {
+  document.getElementById('cta-win').style.display = os === 'win' ? 'flex' : 'none';
+  document.getElementById('cta-mac').style.display = os === 'mac' ? 'flex' : 'none';
+  document.getElementById('tab-win').classList.toggle('active', os === 'win');
+  document.getElementById('tab-mac').classList.toggle('active', os === 'mac');
+}
+
+function switchDL(os) {
+  document.getElementById('dpanel-win').classList.toggle('active', os === 'win');
+  document.getElementById('dpanel-mac').classList.toggle('active', os === 'mac');
+  document.getElementById('dtab-win').classList.toggle('active', os === 'win');
+  document.getElementById('dtab-mac').classList.toggle('active', os === 'mac');
+}
+
+// 초기화
+var defaultOS = isMac ? 'mac' : 'win';
+switchOS(defaultOS);
+switchDL(defaultOS);
 </script>
 </body>
 </html>
-
