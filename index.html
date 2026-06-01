@@ -354,11 +354,11 @@
       개발팀이 설계에 쓰는 시간을 되찾으세요.
     </p>
     <div class="cta-wrap">
-      <a href="#download" class="cta-main">
+      <a href="#download" class="cta-main" id="hero-cta">
         <span class="cta-icon">⬇</span>
         <span class="cta-text">
           <span class="cta-text-main">지금 무료 다운로드</span>
-          <span class="cta-text-sub">Windows 10 / 11 · 설치 후 즉시 사용</span>
+          <span class="cta-text-sub" id="hero-os-label">Windows 10/11 · macOS 12+</span>
         </span>
       </a>
       <div class="cta-meta">
@@ -473,7 +473,7 @@
     <div class="spec-grid">
       <div class="spec-item">
         <div class="spec-label">운영체제</div>
-        <div class="spec-val">Windows 10 / 11<br />(x64)</div>
+        <div class="spec-val">Windows 10 / 11 (x64)<br/>macOS 12+ (Apple Silicon · Intel)</div>
       </div>
       <div class="spec-item">
         <div class="spec-label">메모리</div>
@@ -499,18 +499,28 @@
       <span class="s-eyebrow">Download</span>
       <div class="dl-title">지금 시작하세요</div>
       <div class="dl-sub">설치 후 바로 사용 가능합니다.<br />Python 등 별도 설치가 필요 없습니다.</div>
-      <div>
-        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR.Setup.2.0.0.exe" class="dl-btn">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+        <a href="https://github.com/Asist525/randering/releases/download/v2.0.0/NAVIGATOR.Setup.2.0.0.exe" class="dl-btn" id="dl-win">
           <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          NAVIGATOR 2.0.0 다운로드
+          <span style="display:flex;flex-direction:column;text-align:left;">
+            <span style="font-size:17px;font-weight:800;">Windows 다운로드</span>
+            <span style="font-size:11px;font-weight:500;opacity:.75;">v2.0.0 · Windows 10 / 11 · x64</span>
+          </span>
+        </a>
+        <a href="https://github.com/xxriny/KNU-PROJECT/releases/latest/download/NAVIGATOR-2.0.0-arm64.dmg" class="dl-btn" id="dl-mac" style="background:linear-gradient(135deg,#1d3557,#2d4a7a);box-shadow:0 0 60px rgba(79,142,247,0.15);">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span style="display:flex;flex-direction:column;text-align:left;">
+            <span style="font-size:17px;font-weight:800;">macOS 다운로드</span>
+            <span style="font-size:11px;font-weight:500;opacity:.75;">v2.0.0 · Apple Silicon · Intel (Rosetta 2)</span>
+          </span>
         </a>
       </div>
-      <div class="dl-note">
-        Windows 10 / 11 · x64
-        <span>|</span>
+      <div class="dl-note" style="margin-top:8px;">
         자동 업데이트 지원
         <span>|</span>
-        관리자 권한 불필요
+        Python 별도 설치 불필요
+        <span>|</span>
+        macOS: 최초 실행 시 우클릭 → 열기
       </div>
     </div>
   </div>
@@ -525,5 +535,22 @@
   <div class="f-copy">© 2026 NAVIGATOR. All rights reserved.</div>
 </footer>
 
+<script>
+(function () {
+  const mac = /mac/i.test(navigator.platform) || (/mac/i.test(navigator.userAgent) && !/mobile/i.test(navigator.userAgent));
+  if (!mac) return;
+  // macOS 버튼 강조
+  var dlMac = document.getElementById('dl-mac');
+  var dlWin = document.getElementById('dl-win');
+  if (dlMac) dlMac.style.cssText += 'background:linear-gradient(135deg,#4F8EF7,#9B6DFF)!important;box-shadow:0 0 80px rgba(79,142,247,0.4)!important;';
+  if (dlWin) dlWin.style.opacity = '0.55';
+  // 히어로 CTA를 macOS 다운로드로 연결
+  var cta = document.getElementById('hero-cta');
+  var label = document.getElementById('hero-os-label');
+  if (cta) cta.href = 'https://github.com/xxriny/KNU-PROJECT/releases/latest/download/NAVIGATOR-2.0.0-arm64.dmg';
+  if (label) label.textContent = 'macOS 12+ · Apple Silicon · Intel · 설치 후 즉시 사용';
+})();
+</script>
 </body>
 </html>
+
